@@ -1,0 +1,85 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+@layer base {
+  body {
+    @apply bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col overflow-x-hidden selection:bg-primary selection:text-white;
+  }
+}
+body {
+  height: 0;
+}
+@layer utilities {
+  .hide-scroll::-webkit-scrollbar {
+    height: 6px;
+  }
+  .hide-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .hide-scroll::-webkit-scrollbar-thumb {
+    background-color: #e5e7eb;
+    border-radius: 20px;
+  }
+
+  /* Decorative footer background */
+  .footer-glow {
+    background: radial-gradient(
+      circle at top right,
+      rgba(96, 165, 250, 0.08),
+      transparent 400px
+    );
+  }
+}
+.material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}
+.material-symbols-outlined.fill {
+  font-variation-settings:
+    "FILL" 1,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}
+details[open] summary {
+  @apply border-primary-light/30 bg-primary/5;
+}
+details[open] summary .expand-icon {
+  @apply rotate-180 text-primary-light;
+}
+details[open] .faq-content {
+  @apply block opacity-100 translate-y-0;
+}
+.faq-item {
+  transition: transform 0.2s ease-out;
+}
+.faq-item:hover {
+  transform: translateY(-2px);
+}
+
+.text-3d-effect {
+  color: rgba(
+    59,
+    30,
+    138,
+    0.08
+  ); /* Primary color with very low opacity for base */
+  text-shadow:
+    2px 2px 0px #e2e0ea,
+    4px 4px 0px #d4d0e3,
+    6px 6px 0px #c6c1dc,
+    8px 8px 0px #b8b1d5,
+    10px 10px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+.dark .text-3d-effect {
+  color: rgba(255, 255, 255, 0.05);
+  text-shadow:
+    2px 2px 0px #2a243d,
+    4px 4px 0px #342d4d,
+    6px 6px 0px #3e365c,
+    8px 8px 0px #473f6b,
+    10px 10px 20px rgba(0, 0, 0, 0.5);
+}

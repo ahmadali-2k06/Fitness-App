@@ -2,8 +2,90 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 function Header() {
+  // Configuration for Mobile Navigation Items
+  const mobileNavItems = [
+    { to: "/", icon: "home", label: "Home" },
+    { to: "/workouts", icon: "fitness_center", label: "Workouts" },
+    { to: "/progress", icon: "monitoring", label: "Progress" },
+    { to: "/support", icon: "groups", label: "Support" },
+  ];
+
   return (
     <>
+      {/* MOBILE NAVIGATION BOTTOM BAR */}
+      <div
+        className="fixed bottom-0 left-0 right-0 z-50
+        md:hidden
+        bg-white dark:bg-[#1a202c]
+        rounded-t-2xl
+        shadow-[0_8px_30px_rgb(0,0,0,0.12)]
+        border-t border-white/50 dark:border-gray-700/50
+        flex justify-between items-center
+        px-2 py-3
+        backdrop-blur-xl"
+      >
+        {mobileNavItems.map((item) => (
+          <NavLink
+            key={item.label}
+            to={item.to}
+            className="flex-1 flex flex-col items-center gap-1 group/nav-item relative"
+          >
+            {({ isActive }) => (
+              <>
+                {/* Icon Container with Glow Effect */}
+                <div
+                  className={`relative p-2 rounded-xl transition-all duration-300 transform 
+                  ${
+                    isActive
+                      ? "bg-primary/10 text-primary scale-110 shadow-nav-glow"
+                      : "text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 group-hover/nav-item:-translate-y-1"
+                  }`}
+                >
+                  {/* Glow Background (Active Only) */}
+                  <div
+                    className={`absolute inset-0 bg-primary/20 blur-md rounded-full transition-opacity duration-300 ${
+                      isActive ? "opacity-50" : "opacity-0"
+                    }`}
+                  ></div>
+
+                  {/* Icon */}
+                  <span
+                    className="material-symbols-outlined relative z-10"
+                    style={{
+                      fontVariationSettings: isActive
+                        ? '"FILL" 1, "wght" 600'
+                        : '"FILL" 0, "wght" 400',
+                    }}
+                  >
+                    {item.icon}
+                  </span>
+                </div>
+
+                {/* Label */}
+                <span
+                  className={`text-[10px] font-medium transition-all duration-300
+                  ${
+                    isActive
+                      ? "text-primary translate-y-0.5 font-bold"
+                      : "opacity-0 group-hover/nav-item:opacity-100 absolute bottom-0 translate-y-4 group-hover/nav-item:translate-y-0"
+                  }`}
+                >
+                  {item.label}
+                </span>
+
+                {/* Active Indicator Dot */}
+                <div
+                  className={`absolute -bottom-1 w-1 h-1 bg-primary rounded-full transition-all duration-300 ${
+                    isActive ? "opacity-100 scale-100" : "opacity-0 scale-0"
+                  }`}
+                ></div>
+              </>
+            )}
+          </NavLink>
+        ))}
+      </div>
+
+      {/* DESKTOP HEADER (Unchanged logic, just context) */}
       <header className="sticky top-0 z-50 backdrop-blur-md bg-background-light/80 dark:bg-background-dark/80 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
@@ -104,4 +186,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Header;  

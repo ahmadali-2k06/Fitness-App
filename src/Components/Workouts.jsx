@@ -3,8 +3,8 @@ import React from "react";
 function Workouts() {
   return (
     <>
-      <div className="flex flex-1 overflow-hidden p-4 gap-4 h-screen">
-        <nav className="hidden md:flex flex-col w-64 flex-shrink-0 bg-surface-light dark:bg-surface-dark rounded-2xl shadow-sm border border-slate-200/60 dark:border-slate-800 overflow-hidden">
+      <div className="flex flex-wrap md:flex-nowrap h-auto min-h-screen md:h-screen w-full p-4 gap-4 overflow-y-auto md:overflow-hidden">
+        <nav className="w-full md:w-64 flex flex-col flex-shrink-0 h-auto md:h-full bg-surface-light dark:bg-surface-dark rounded-2xl shadow-sm border border-slate-200/60 dark:border-slate-800 overflow-hidden">
           <div className="p-4 pb-2">
             <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4 px-2">
               Library
@@ -73,7 +73,7 @@ function Workouts() {
             </button>
           </div>
         </nav>
-        <aside className="flex flex-col w-80 flex-shrink-0 bg-surface-light dark:bg-surface-dark rounded-2xl shadow-md z-10 border border-slate-200/60 dark:border-slate-800 overflow-hidden">
+        <aside className="w-full md:flex-1 flex flex-col h-[80vh] md:h-full bg-surface-light dark:bg-surface-dark rounded-2xl shadow-xl z-20 border border-slate-200/60 dark:border-slate-800 overflow-hidden relative">
           <div className="p-4 border-b border-slate-100 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm sticky top-0 z-20">
             <div className="flex items-center justify-between mb-4">
               <h1 className="text-lg font-bold text-slate-900 dark:text-white">

@@ -22,7 +22,6 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
-      <Route path="*" element={<NotFound />} />
       <Route
         path="dashboard"
         element={<Dashboard />}
@@ -32,9 +31,9 @@ const router = createBrowserRouter(
       <Route path="workouts" element={<Workouts />} />
       <Route path="progress" element={<Nutritions />} />
 
-      <Route path="support" element={<Support />}>
-        <Route path="faqs" element={<FAQS />} />
-      </Route>
+      <Route path="support" element={<Support />} />
+      <Route path="/support/faqs" element={<FAQS />} />
+      <Route path="*" element={<NotFound />} />
     </Route>,
   ),
 );
